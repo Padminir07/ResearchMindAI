@@ -1,8 +1,9 @@
-from services.embedding_service import model
+from sentence_transformers import SentenceTransformer
 from services.vector_db_service import collection
 
-
 def search_documents(query):
+
+    model = SentenceTransformer("all-MiniLM-L6-v2")
 
     query_embedding = model.encode(query).tolist()
 
