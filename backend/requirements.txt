@@ -7,3 +7,4 @@ langchain-community
 langchain-groq
 chromadb
 python-dotenv
+sentence-transformers
