@@ -8,3 +8,7 @@ langchain-groq
 chromadb
 python-dotenv
 sentence-transformers
+groq
+torch
+transformers
+huggingface_hub
