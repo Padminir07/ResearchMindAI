@@ -12,6 +12,16 @@ collection = client.get_or_create_collection(
 
 def store_embeddings(chunks, embeddings, filename):
 
+    # Delete all old documents
+    try:
+        all_data = collection.get()
+
+        if all_data["ids"]:
+            collection.delete(ids=all_data["ids"])
+
+    except Exception as e:
+        print("Delete error:", e)
+
     ids = [str(uuid.uuid4()) for _ in range(len(chunks))]
 
     metadatas = [
