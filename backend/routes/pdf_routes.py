@@ -1,5 +1,5 @@
 from fastapi import APIRouter, UploadFile, File
-
+import os
 from services.pdf_service import extract_text_from_pdf
 from utils.text_chunker import split_text_into_chunks
 from services.embedding_service import generate_embeddings
@@ -21,6 +21,7 @@ latest_uploaded_pdf = None
 @router.post("/upload")
 async def upload_pdf(file: UploadFile = File(...)):
     global latest_uploaded_pdf
+    os.makedirs("uploads", exist_ok=True)
     file_path = f"uploads/{file.filename}"
 
     with open(file_path, "wb") as buffer:
