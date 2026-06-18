@@ -26,7 +26,7 @@ const handleFileChange = async (e) => {
   formData.append("file", file);
 
   try {
-    const response = await fetch("http://127.0.0.1:8000/upload", {
+    const response = await fetch("https://researchmindai-production.up.railway.app/upload", {
       method: "POST",
       body: formData,
     });
@@ -43,7 +43,7 @@ const handleFileChange = async (e) => {
 const handleAsk = async () => {
   try {
     const response = await fetch(
-      `http://127.0.0.1:8000/ask?question=${question}`
+      `https://researchmindai-production.up.railway.app/ask?question=${question}`
     );
 
     const data = await response.json();
@@ -57,7 +57,7 @@ const handleAsk = async () => {
   }
 };
 useEffect(() => {
-  fetch("http://127.0.0.1:8000/pdfs")
+  fetch("https://researchmindai-production.up.railway.app/pdfs")
     .then((response) => response.json())
     .then((data) => {
       setPdfCount(data.uploaded_pdfs.length);
@@ -68,7 +68,7 @@ useEffect(() => {
 }, []);
 const handleSummary = async () => {
   try {
-    const response = await fetch("http://127.0.0.1:8000/summary");
+    const response = await fetch("https://researchmindai-production.up.railway.app/summary");
     const data = await response.json();
 
     setSummary(data.summary);
